@@ -30,6 +30,8 @@ from claude_agent_sdk.exceptions import (
     AuthenticationError,
     RateLimitError,
     ToolExecutionError,
+    # NOTE: ConnectionError is also available upstream but not re-exported here;
+    # using the built-in Python ConnectionError is fine for my use cases.
 )
 
 __all__ = [
