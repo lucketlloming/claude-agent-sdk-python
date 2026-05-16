@@ -32,6 +32,8 @@ from claude_agent_sdk.exceptions import (
     ToolExecutionError,
     # NOTE: ConnectionError is also available upstream but not re-exported here;
     # using the built-in Python ConnectionError is fine for my use cases.
+    # TODO: revisit if I start doing more network-resilience work and need
+    # the SDK's richer ConnectionError with retry context attached.
 )
 
 __all__ = [
