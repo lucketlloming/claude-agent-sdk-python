@@ -44,6 +44,20 @@ SDKError = AgentSDKError
 # when catching tool-related failures in my agent loops.
 ToolError = ToolExecutionError
 
+# Quick sanity-check helper I added for debugging in notebooks/REPLs.
+# Calling claude_agent_sdk.versions() gives me a snapshot without having to
+# import importlib.metadata manually every time.
+def versions() -> dict[str, str]:
+    """Return a dict of key package versions for debugging purposes."""
+    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic"]
+    result = {}
+    for pkg in pkgs:
+        try:
+            result[pkg] = importlib.metadata.version(pkg)
+        except importlib.metadata.PackageNotFoundError:
+            result[pkg] = "not installed"
+    return result
+
 __all__ = [
     "__version__",
     "AgentClient",
@@ -59,4 +73,5 @@ __all__ = [
     "RateLimitError",
     "ToolExecutionError",
     "ToolError",
+    "versions",
 ]
