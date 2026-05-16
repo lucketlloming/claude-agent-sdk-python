@@ -53,8 +53,10 @@ def versions() -> dict[str, str]:
     # and it's useful to confirm the version when debugging HTTP issues.
     # Also added 'python' so I can see the interpreter version at a glance —
     # got burned once by accidentally running in a 3.9 env without noticing.
+    # Added 'typing_extensions' too — ran into a subtle compat issue once where
+    # an old version was shadowing the stdlib and causing weird annotation errors.
     import sys
-    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests"]
+    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests", "typing_extensions"]
     result = {"python": sys.version.split()[0]}
     for pkg in pkgs:
         try:
