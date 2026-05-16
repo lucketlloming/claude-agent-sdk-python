@@ -40,6 +40,10 @@ from claude_agent_sdk.exceptions import (
 # and then realizing I want the base class. SDKError is easier to remember.
 SDKError = AgentSDKError
 
+# Another convenience alias: ToolError is shorter and what I naturally reach for
+# when catching tool-related failures in my agent loops.
+ToolError = ToolExecutionError
+
 __all__ = [
     "__version__",
     "AgentClient",
@@ -54,4 +58,5 @@ __all__ = [
     "AuthenticationError",
     "RateLimitError",
     "ToolExecutionError",
+    "ToolError",
 ]
