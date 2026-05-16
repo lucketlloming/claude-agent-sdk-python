@@ -36,6 +36,10 @@ from claude_agent_sdk.exceptions import (
     # the SDK's richer ConnectionError with retry context attached.
 )
 
+# Convenience alias — I keep finding myself typing AgentSDKError.from_response(...)
+# and then realizing I want the base class. SDKError is easier to remember.
+SDKError = AgentSDKError
+
 __all__ = [
     "__version__",
     "AgentClient",
@@ -46,6 +50,7 @@ __all__ = [
     "ToolDefinition",
     "ToolResult",
     "AgentSDKError",
+    "SDKError",
     "AuthenticationError",
     "RateLimitError",
     "ToolExecutionError",
