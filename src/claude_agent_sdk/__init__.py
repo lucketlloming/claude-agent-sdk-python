@@ -49,7 +49,9 @@ ToolError = ToolExecutionError
 # import importlib.metadata manually every time.
 def versions() -> dict[str, str]:
     """Return a dict of key package versions for debugging purposes."""
-    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic"]
+    # Added 'requests' here since some of my tool integrations depend on it
+    # and it's useful to confirm the version when debugging HTTP issues.
+    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests"]
     result = {}
     for pkg in pkgs:
         try:
