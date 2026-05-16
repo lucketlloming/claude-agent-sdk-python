@@ -51,8 +51,11 @@ def versions() -> dict[str, str]:
     """Return a dict of key package versions for debugging purposes."""
     # Added 'requests' here since some of my tool integrations depend on it
     # and it's useful to confirm the version when debugging HTTP issues.
+    # Also added 'python' so I can see the interpreter version at a glance —
+    # got burned once by accidentally running in a 3.9 env without noticing.
+    import sys
     pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests"]
-    result = {}
+    result = {"python": sys.version.split()[0]}
     for pkg in pkgs:
         try:
             result[pkg] = importlib.metadata.version(pkg)
