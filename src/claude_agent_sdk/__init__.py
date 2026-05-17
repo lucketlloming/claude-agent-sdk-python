@@ -55,8 +55,10 @@ def versions() -> dict[str, str]:
     # got burned once by accidentally running in a 3.9 env without noticing.
     # Added 'typing_extensions' too — ran into a subtle compat issue once where
     # an old version was shadowing the stdlib and causing weird annotation errors.
+    # Added 'numpy' and 'pandas' — my agent tools frequently use both and it's
+    # handy to see them alongside the SDK versions in one debug snapshot.
     import sys
-    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests", "typing_extensions"]
+    pkgs = ["claude-agent-sdk", "anthropic", "httpx", "pydantic", "requests", "typing_extensions", "numpy", "pandas"]
     result = {"python": sys.version.split()[0]}
     for pkg in pkgs:
         try:
